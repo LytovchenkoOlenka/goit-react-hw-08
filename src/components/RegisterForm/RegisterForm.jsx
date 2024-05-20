@@ -1,9 +1,14 @@
+import { useDispatch } from "react-redux";
 import css from "./RegisterForm.module.css";
 import { Formik, Form, Field } from "formik";
+import { register } from "../../redux/auth/operations";
 
 export default function RegisterForm() {
-  const handleSubmit = (values) => {
-    console.log(values);
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values, actions) => {
+    dispatch(register(values));
+    actions.resetForm();
   };
 
   return (
