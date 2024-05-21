@@ -1,10 +1,24 @@
+import { useDispatch } from "react-redux";
 import css from "./LoginForm.module.css";
 import { Formik, Form, Field } from "formik";
-// import { logIn } from "../../redux/auth/operations";
+import { logIn } from "../../redux/auth/operations";
+// import { toast } from "react-hot-toast";
 
 export default function LoginForm() {
-  const handleSubmit = (values) => {
-    console.log(values);
+  const dispatch = useDispatch();
+
+  //отримуємо проміс нашого запиту і обробляємо(then.catch), щоб вивести тост
+  const handleSubmit = (values, actions) => {
+    dispatch(logIn(values));
+    // .unwrap()
+    // .then(() => {
+    //   toast.success("Success!!!");
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // toast.error("Error!!!");
+    // });
+    actions.resetForm();
   };
 
   return (
