@@ -10,26 +10,45 @@ const ContactsPage = lazy(() =>
 );
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import Layout from "../Layout/Layout";
+import RestrictedRoute from "../RestrictedRoute/RestrictedRoute";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import { useDispatch, useSelector } from "react-redux";
 
-// import { selectIsRefreshing } from "../../redux/auth/selectors";
+import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { refreshUser } from "../../redux/auth/operations";
 
 export default function App() {
   const dispatch = useDispatch();
-  // const isRefreshing = useSelector(selectIsRefreshing);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <b>Refreshing...</b>
+  ) : (
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute component={<RegistrationPage />} redirectTo="/" />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute component={<LoginPage />} redirectTo="/contacts" />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute component={<ContactsPage />} redirectTo="/login" />
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>

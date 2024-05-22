@@ -4,7 +4,7 @@ import ContactList from "../../components/ContactList/ContactList";
 import Error from "../../components/Error/Error";
 import Loader from "../../components/Loader/Loader";
 
-// import css from "./";
+import css from "./ContactsPage.module.css";
 
 import { fetchContacts } from "../../redux/contacts/operations";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,7 +22,7 @@ export default function ContactsPage() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={css.container}>
       <h1>Phonebook</h1>
       <ContactForm />
       <SearchBox />

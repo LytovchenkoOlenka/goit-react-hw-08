@@ -20,7 +20,6 @@ export const register = createAsyncThunk(
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
-      // return thunkAPI.rejectWithValue(error.response?.data || error.message);
     }
   }
 );
@@ -49,12 +48,20 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 
 export const refreshUser = createAsyncThunk(
   "auth/refresh",
-  async (user, thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/users/current", user);
+      const reduxState = thunkAPI.getState();
+      setAuthHeader(reduxState.auth.token);
+      const response = await axios.get("/users/current");
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
+  },
+  {
+    condition: (_, thunkAPI) => {
+      const reduxState = thunkAPI.getState();
+      return reduxState.auth.token !== null;
+    },
   }
 );
