@@ -2,10 +2,11 @@
   border: 1px solid black;
   border-radius: 4px;
   padding: 16px 8px;
-  width: 235px;
+  width: 300px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .btnContainer {
@@ -14,11 +15,10 @@
   gap: 4px;
 }
 
-/* input {
-} */
-
 .text {
   display: flex;
+  width: 200px;
+
   gap: 2px;
   font-size: 18px;
   font-weight: 700;
@@ -33,10 +33,6 @@
 
 .btn {
   border-radius: 4px;
-  border: 1px solid #6d6d6d;
   padding: 4px 8px;
-  background-color: #d6d6d6;
-  cursor: pointer;
-  transition: background-color 0.5s;
-  color: #000;
+  font-size: 12px;
 }

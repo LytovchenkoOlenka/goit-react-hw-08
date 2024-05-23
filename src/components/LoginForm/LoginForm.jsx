@@ -3,6 +3,7 @@ import css from "./LoginForm.module.css";
 import { Formik, Form, Field } from "formik";
 import { logIn } from "../../redux/auth/operations";
 import { toast } from "react-hot-toast";
+import { Button } from "@mui/material";
 
 export default function LoginForm() {
   const dispatch = useDispatch();
@@ -32,13 +33,15 @@ export default function LoginForm() {
         <Form className={css.form} autoComplete="off">
           <label className={css.label}>
             Email
-            <Field type="email" name="email" />
+            <Field className={css.input} type="email" name="email" />
           </label>
           <label className={css.label}>
             Password
-            <Field type="password" name="password" />
+            <Field className={css.input} type="password" name="password" />
           </label>
-          <button type="submit">Log In</button>
+          <Button className={css.btn} variant="contained" type="submit">
+            Log In
+          </Button>
         </Form>
       </Formik>
     </div>

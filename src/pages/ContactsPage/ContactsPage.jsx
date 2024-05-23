@@ -25,7 +25,7 @@ export default function ContactsPage() {
     <div className={css.mainContainer}>
       <h1 className={css.title}>Phonebook</h1>
       <div className={css.container}>
-        <div className={css.thumb}>
+        <div>
           <ContactForm />
         </div>
         <div className={css.thumb}>

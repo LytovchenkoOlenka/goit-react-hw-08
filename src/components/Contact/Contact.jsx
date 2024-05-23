@@ -33,7 +33,7 @@ export default function Contact({ data: { id, name, number } }) {
       {/* <button className={css.btn} onClick={handleDelete}>
         Delete
       </button> */}
-      <Button variant="contained" onClick={handleDelete}>
+      <Button className={css.btn} variant="contained" onClick={handleDelete}>
         Delete
       </Button>
     </div>

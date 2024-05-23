@@ -13,16 +13,6 @@ export default function HomePage() {
       <p className={css.subtitle}>
         Manage your contacts easily and efficiently
       </p>
-      <ul className={css.featureList}>
-        <li className={css.featureItem}>Save and manage your contacts</li>
-        <li className={css.featureItem}>
-          Search for contacts by name or phone number
-        </li>
-        <li className={css.featureItem}>Edit and update contact information</li>
-        <li className={css.featureItem}>
-          Delete contacts when no longer needed
-        </li>
-      </ul>
     </div>
   );
 }

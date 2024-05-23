@@ -18,8 +18,6 @@ h5 {
 
 body {
   background-color: rgba(120, 190, 202, 0.74);
-}
-
-input {
-  background-color: transparent;
+  margin: 0;
+  padding: 0;
 }

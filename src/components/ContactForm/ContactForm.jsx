@@ -12,7 +12,7 @@ const FormSchema = Yup.object().shape({
   name: Yup.string()
     .trim()
     .min(3, "Min 3 chars!")
-    .max(50, "Max 50 chars!")
+    .max(20, "Max 20 chars!")
     .matches(/^[^0-9]*$/, "Cannot contain numbers")
     .required("Required"),
   number: Yup.string()
