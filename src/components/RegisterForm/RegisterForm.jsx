@@ -2,13 +2,21 @@ import { useDispatch } from "react-redux";
 import css from "./RegisterForm.module.css";
 import { Formik, Form, Field } from "formik";
 import { register } from "../../redux/auth/operations";
+import { toast } from "react-hot-toast";
 import { Button } from "@mui/material";
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    dispatch(register(values));
+    dispatch(register(values))
+      .unwrap()
+      .then(() => {
+        toast.success("Success!!!");
+      })
+      .catch(() => {
+        toast.error("Error!!!");
+      });
     actions.resetForm();
   };
 
