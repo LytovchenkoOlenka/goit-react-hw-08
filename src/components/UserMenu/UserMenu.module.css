@@ -5,5 +5,9 @@
 }
 
 .username {
-  font-weight: 700;
+  text-decoration: none;
+  padding: 6px 12px;
+  color: #000000;
+  font-size: 24px;
+  font-weight: 600;
 }

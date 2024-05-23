@@ -1,8 +1,10 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { Button } from "@mui/material";
 import { useId } from "react";
 import { addContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
+import { toast } from "react-hot-toast";
 
 import css from "./ContactForm.module.css";
 
@@ -26,7 +28,14 @@ export default function ContactForm() {
   const numberId = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact(values));
+    dispatch(addContact(values))
+      .unwrap()
+      .then(() => {
+        toast.success("Contact was added");
+      })
+      .catch(() => {
+        toast.error("Sorry, contact wasn`t added. Please try again");
+      });
     actions.resetForm();
   };
 
@@ -54,9 +63,9 @@ export default function ContactForm() {
           <Field className={css.input} name="number" id={numberId}></Field>
           <ErrorMessage className={css.error} name="number" component="span" />
         </div>
-        <button className={css.btn} type="submit">
+        <Button variant="contained" type="submit">
           Add contact
-        </button>
+        </Button>
       </Form>
     </Formik>
   );

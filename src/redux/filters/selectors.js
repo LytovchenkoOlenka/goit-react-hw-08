@@ -6,8 +6,11 @@ export const selectUsersQuery = (state) => state.filters.name;
 export const selectFiltredContacts = createSelector(
   [selectContacts, selectUsersQuery],
   (contacts, query) => {
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(query.toLowerCase())
+    const lowerCaseQuery = query.toLowerCase();
+    return contacts.filter(
+      (contact) =>
+        contact.name.toLowerCase().includes(lowerCaseQuery) ||
+        contact.number.toLowerCase().includes(lowerCaseQuery)
     );
   }
 );

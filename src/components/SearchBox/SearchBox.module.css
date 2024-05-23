@@ -1,1 +1,10 @@
+.label {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
 
+.input {
+  width: 250px;
+  height: 18px;
+  padding: 4px;
+}

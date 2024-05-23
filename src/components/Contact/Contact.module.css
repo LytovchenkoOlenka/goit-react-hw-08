@@ -2,13 +2,24 @@
   border: 1px solid black;
   border-radius: 4px;
   padding: 16px 8px;
-  width: 250px;
+  width: 235px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* input {
+} */
+
 .text {
+  display: flex;
+  gap: 2px;
   font-size: 18px;
   font-weight: 700;
   margin: 0;

@@ -22,13 +22,18 @@ export default function ContactsPage() {
   }, [dispatch]);
 
   return (
-    <div className={css.container}>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {loading && <Loader />}
-      {error && <Error />}
-      <ContactList />
+    <div className={css.mainContainer}>
+      <h1 className={css.title}>Phonebook</h1>
+      <div className={css.container}>
+        <div className={css.thumb}>
+          <ContactForm />
+        </div>
+        <div className={css.thumb}>
+          <SearchBox />
+          {error && <Error />}
+          {loading ? <Loader /> : <ContactList />}
+        </div>
+      </div>
     </div>
   );
 }
