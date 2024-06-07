@@ -5,11 +5,18 @@ import { deleteContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import { Button } from "@mui/material";
+import ModalWindow from "../ModalWindow/ModalWindow";
+import { useState } from "react";
 
 export default function Contact({ data: { id, name, number } }) {
+  const [isModal, setIsModal] = useState(false);
   const dispatch = useDispatch();
 
-  const handleDelete = () => {
+  const toggleModal = () => {
+    setIsModal(!isModal);
+  };
+
+  const handleConfirmDelete = () => {
     dispatch(deleteContact(id))
       .unwrap()
       .then(() => {
@@ -22,7 +29,7 @@ export default function Contact({ data: { id, name, number } }) {
 
   return (
     <div className={css.container}>
-      <data className={css.data}>
+      <data className={css.data} onClick={toggleModal}>
         <p className={css.text}>
           <IoPerson /> {name}
         </p>
@@ -33,9 +40,15 @@ export default function Contact({ data: { id, name, number } }) {
       {/* <button className={css.btn} onClick={handleDelete}>
         Delete
       </button> */}
-      <Button className={css.btn} variant="contained" onClick={handleDelete}>
+      <Button className={css.btn} variant="contained" onClick={toggleModal}>
         Delete
       </Button>
+      <ModalWindow
+        isOpen={isModal}
+        name={name}
+        onClose={toggleModal}
+        onConfirm={handleConfirmDelete}
+      />
     </div>
   );
 }
