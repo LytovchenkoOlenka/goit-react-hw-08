@@ -42,9 +42,9 @@ export default function RegisterForm() {
           Password
           <Field className={css.input} type="password" name="password" />
         </label>
-        <Button className={css.btn} variant="contained" type="submit">
+        <button className={css.btn} type="submit">
           Register
-        </Button>
+        </button>
       </Form>
     </Formik>
   );

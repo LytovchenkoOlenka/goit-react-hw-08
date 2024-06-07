@@ -1,10 +1,28 @@
 .label {
+  color: var(--dark-blue);
   font-size: 20px;
   margin-bottom: 4px;
 }
 
-.input {
+.container {
   width: 250px;
-  height: 18px;
+  position: relative;
+}
+.input {
+  width: 100%;
   padding: 4px;
+  border: 1px solid var(--deep-blue);
+  border-radius: 4px;
+  background-color: var(--soft-blue);
+  color: var(--dark-blue);
+  font-size: 16px;
+}
+
+.icon {
+  padding: 4px;
+  position: absolute;
+  top: 48%;
+  right: -10px;
+  font-size: 18px;
+  fill: var(--deep-blue);
 }

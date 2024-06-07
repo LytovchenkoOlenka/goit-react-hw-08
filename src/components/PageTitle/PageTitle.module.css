@@ -1,5 +1,5 @@
 .heading {
-  margin-top: 0;
-  margin-bottom: 24px;
-  font-size: 32px;
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: var(--dark-blue);
 }

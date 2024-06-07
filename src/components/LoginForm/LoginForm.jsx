@@ -39,9 +39,12 @@ export default function LoginForm() {
             Password
             <Field className={css.input} type="password" name="password" />
           </label>
-          <Button className={css.btn} variant="contained" type="submit">
+          <button className={css.btn} type="submit">
             Log In
-          </Button>
+          </button>
+          {/* <Button className={css.btn} variant="contained" type="submit">
+            Log In
+          </Button> */}
         </Form>
       </Formik>
     </div>

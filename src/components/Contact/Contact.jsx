@@ -27,7 +27,7 @@ export default function Contact({ data: { id, name, number } }) {
           <IoPerson /> {name}
         </p>
         <p className={css.text}>
-          <FaPhoneAlt /> {number}
+          <FaPhoneAlt className={css.icon} /> {number}
         </p>
       </data>
       {/* <button className={css.btn} onClick={handleDelete}>

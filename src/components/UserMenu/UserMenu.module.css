@@ -7,7 +7,22 @@
 .username {
   text-decoration: none;
   padding: 6px 12px;
-  color: #000000;
+  color: var(--black);
   font-size: 24px;
   font-weight: 600;
+}
+
+.btn {
+  font-size: 18px;
+  border: none;
+  background-color: var(--medium-blue);
+  color: var(--black);
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--light-blue);
+  color: var(--black);
 }
