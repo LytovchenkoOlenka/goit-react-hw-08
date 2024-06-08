@@ -4,16 +4,22 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { deleteContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 import ModalWindow from "../ModalWindow/ModalWindow";
+import ModalEditing from "../ModalEditing/ModalEditing";
 import { useState } from "react";
 
 export default function Contact({ data: { id, name, number } }) {
-  const [isModal, setIsModal] = useState(false);
+  const [isModalDeleting, setIsModalDeleting] = useState(false);
+  const [isModalEditing, setIsModalEditing] = useState(false);
   const dispatch = useDispatch();
 
-  const toggleModal = () => {
-    setIsModal(!isModal);
+  const toggleModalDeleting = () => {
+    setIsModalDeleting(!isModalDeleting);
+  };
+
+  const toggleModalEditind = () => {
+    setIsModalEditing(!isModalEditing);
   };
 
   const handleConfirmDelete = () => {
@@ -29,7 +35,7 @@ export default function Contact({ data: { id, name, number } }) {
 
   return (
     <div className={css.container}>
-      <data className={css.data} onClick={toggleModal}>
+      <data className={css.data} onClick={toggleModalDeleting}>
         <p className={css.text}>
           <IoPerson /> {name}
         </p>
@@ -40,14 +46,27 @@ export default function Contact({ data: { id, name, number } }) {
       {/* <button className={css.btn} onClick={handleDelete}>
         Delete
       </button> */}
-      <Button className={css.btn} variant="contained" onClick={toggleModal}>
-        Delete
-      </Button>
+      {/* <Button className={css.btn} variant="contained" onClick={toggleModal}>
+        Edit
+      </Button> */}
+      <div className={css.btnContainer}>
+        <button className={css.btn} onClick={toggleModalDeleting}>
+          Delete
+        </button>
+        <button className={css.btn} onClick={toggleModalEditind}>
+          Edit
+        </button>
+      </div>
       <ModalWindow
-        isOpen={isModal}
+        isOpen={isModalDeleting}
         name={name}
-        onClose={toggleModal}
+        onClose={toggleModalDeleting}
         onConfirm={handleConfirmDelete}
+      />
+      <ModalEditing
+        isOpen={isModalEditing}
+        name={name}
+        onClose={toggleModalEditind}
       />
     </div>
   );
