@@ -1,11 +1,11 @@
 import { useDispatch } from "react-redux";
-import css from "./RegisterForm.module.css";
+import css from "./RegistrationForm.module.css";
 import { Formik, Form, Field } from "formik";
 import { register } from "../../redux/auth/operations";
 import { toast } from "react-hot-toast";
-import { Button } from "@mui/material";
+// import { Button } from "@mui/material";
 
-export default function RegisterForm() {
+export default function RegistrationForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
