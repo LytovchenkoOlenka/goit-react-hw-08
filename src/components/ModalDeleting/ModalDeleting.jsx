@@ -1,6 +1,6 @@
-import css from "./ModalWindow.module.css";
+import css from "./ModalDeleting.module.css";
 
-export default function ModalWindow({ isOpen, name, onConfirm, onClose }) {
+export default function ModalDeleting({ isOpen, name, onConfirm, onClose }) {
   if (!isOpen) return null;
 
   return (

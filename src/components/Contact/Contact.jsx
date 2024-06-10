@@ -5,7 +5,7 @@ import { deleteContact } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 // import { Button } from "@mui/material";
-import ModalWindow from "../ModalWindow/ModalWindow";
+import ModalDeleting from "../ModalDeleting/ModalDeleting";
 import ModalEditing from "../ModalEditing/ModalEditing";
 import { useState } from "react";
 
@@ -57,7 +57,7 @@ export default function Contact({ data: { id, name, number } }) {
           Edit
         </button>
       </div>
-      <ModalWindow
+      <ModalDeleting
         isOpen={isModalDeleting}
         name={name}
         onClose={toggleModalDeleting}
