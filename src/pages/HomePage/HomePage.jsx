@@ -22,7 +22,7 @@ export default function HomePage() {
           quickly find the information you need.
         </p>
         <p className={css.description}>
-          Whether you're a busy professional who needs to keep track of clients
+          Whether you are a busy professional who needs to keep track of clients
           and colleagues, a student managing group projects, or simply someone
           who wants to stay connected with friends and family, our Phone Book
           has the features you need to stay organized and in touch.

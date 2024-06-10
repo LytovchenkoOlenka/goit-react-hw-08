@@ -65,7 +65,9 @@ export default function Contact({ data: { id, name, number } }) {
       />
       <ModalEditing
         isOpen={isModalEditing}
+        id={id}
         name={name}
+        number={number}
         onClose={toggleModalEditind}
       />
     </div>

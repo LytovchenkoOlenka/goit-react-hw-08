@@ -2,9 +2,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Button } from "@mui/material";
 import { useId } from "react";
-// import { addContact } from "../../redux/contacts/operations";
-// import { useDispatch } from "react-redux";
-// import { toast } from "react-hot-toast";
+import { updateContact } from "../../redux/contacts/operations";
+import { useDispatch } from "react-redux";
+import { toast } from "react-hot-toast";
 
 import css from "./EditForm.module.css";
 
@@ -21,32 +21,37 @@ const FormSchema = Yup.object().shape({
     .required("Required"),
 });
 
-export default function EditForm() {
-  //   const dispatch = useDispatch();
-
+export default function EditForm({ id, name, number, onClose }) {
+  const dispatch = useDispatch();
   const nameId = useId();
   const numberId = useId();
 
-  //   const handleSubmit = (values, actions) => {
-  //     dispatch(addContact(values))
-  //       .unwrap()
-  //       .then(() => {
-  //         toast.success("Contact was added");
-  //       })
-  //       .catch(() => {
-  //         toast.error("Sorry, contact wasn`t added. Please try again");
-  //       });
-  //     actions.resetForm();
-  //тут має бути автоматичне закриття модалки
-  //   };
+  const handleSubmit = (values, actions) => {
+    const updatedContact = {
+      id,
+      name: values.name,
+      number: values.number,
+    };
+
+    dispatch(updateContact(updatedContact))
+      .unwrap()
+      .then(() => {
+        toast.success("Contact was updated");
+        onClose();
+      })
+      .catch(() => {
+        toast.error("Sorry, contact wasn't updated. Please try again");
+      });
+    actions.resetForm();
+  };
 
   return (
     <Formik
       initialValues={{
-        name: "",
-        number: "",
+        name: name,
+        number: number,
       }}
-      //   onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
       validationSchema={FormSchema}
     >
       <Form className={css.form}>
