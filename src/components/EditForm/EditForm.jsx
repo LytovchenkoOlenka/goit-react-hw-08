@@ -69,9 +69,12 @@ export default function EditForm({ id, name, number, onClose }) {
           <Field className={css.input} name="number" id={numberId}></Field>
           <ErrorMessage className={css.error} name="number" component="span" />
         </div>
-        <Button variant="contained" type="submit">
+        {/* <Button variant="contained" type="submit">
           Edit contact
-        </Button>
+        </Button> */}
+        <button className={css.btn} type="submit">
+          Edit contact
+        </button>
       </Form>
     </Formik>
   );

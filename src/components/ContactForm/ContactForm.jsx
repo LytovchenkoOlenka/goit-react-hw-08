@@ -63,9 +63,12 @@ export default function ContactForm() {
           <Field className={css.input} name="number" id={numberId}></Field>
           <ErrorMessage className={css.error} name="number" component="span" />
         </div>
-        <Button variant="contained" type="submit">
+        {/* <Button variant="contained" type="submit">
           Add contact
-        </Button>
+        </Button> */}
+        <button className={css.btn} type="submit">
+          Add contact
+        </button>
       </Form>
     </Formik>
   );
